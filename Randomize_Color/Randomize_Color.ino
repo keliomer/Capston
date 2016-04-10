@@ -21,7 +21,7 @@ int x,y,z;
 // the setup routine runs once when you press reset:
 void setup() {
   Wire.begin();
-  gyro.initialize(2000);
+  gyro.initialize(500);
   pinMode(blue, OUTPUT);
   pinMode(red, OUTPUT);
   pinMode(green,OUTPUT);
@@ -47,24 +47,23 @@ Change this to a function that will create a random color on a separate LED
     y = gyro.getY();
     z = gyro.getZ();
 //    if (randGreen == 0 || randGreen == 255):
-    randGreen += byte(x/750);
-    randBlue += byte(y/750);
-    randRed += byte(z/750);
+    randGreen += byte(x/180);
+    randBlue += byte(y/180);
+    randRed += byte(z/180);
     
     
     
     Serial.println("Green:");
-    Serial.println(255 -randGreen);
+    Serial.println(randGreen);
     Serial.println("Red:");
-    Serial.println(255 - randRed);
+    Serial.println(randRed);
     Serial.println("Blue:");
-    Serial.println(255 - randBlue);
+    Serial.println(randBlue);
     Serial.println("-------------");
-    delay(100);
 //  analogWrite(blue, val/4); //Shows control with a external source
-  analogWrite(blue, randBlue);
-  analogWrite(red, randRed);
-  analogWrite(green, randGreen);
+  analogWrite(blue, 255 - randBlue);
+  analogWrite(red, 255 - randRed);
+  analogWrite(green, 255- randGreen);
  
 }
 

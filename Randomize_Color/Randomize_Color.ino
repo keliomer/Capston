@@ -47,7 +47,7 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-  
+  // For the pull request
 /*
 Change this to a function that will create a random color on a separate LED
 */
@@ -56,6 +56,7 @@ Change this to a function that will create a random color on a separate LED
 //    randGreen = random(256);
 //    randRed = random(256);
 //    randBlue = random(256);
+// }
 
 
 //Sets up axis values

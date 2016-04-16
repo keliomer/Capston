@@ -65,9 +65,31 @@ Change this to a function that will create a random color on a separate LED
     z = gyro.getZ();
 //    if (randGreen == 0 || randGreen == 255):
 // The gyro measures degrees/second so we need to figure out how much of a turn we want to be fromm 0-255
-    randGreen += byte(x/180);
-    randBlue += byte(y/180);
-    randRed += byte(z/180);
+
+    if (randGreen == 0 || randGreen == 255){
+      randGreen = -randGreen;
+    }
+    if (randBlue == 0 || randBlue == 255){
+      randBlue = -randBlue;
+    }
+
+    if (randRed == 0 || randRed == 255){
+      randRed = -randRed;
+    }
+
+    int g = int(x/700);
+    int b = int(y/700);
+    int r = int(z/700);
+    
+    if (g > 3 || g <-3){
+    randGreen += g;
+    }
+    if (b > 3 || b < -3){
+    randBlue += b;
+    }
+    if (r > 3 || r < -3){
+    randRed += r;
+    }
     
     
    //Output things for debugging
@@ -85,9 +107,9 @@ Change this to a function that will create a random color on a separate LED
 //  valB = analogRead(potGreen);
 //  analogWrite(green, valG/4); //Shows control with a external source
 //subtract 255 since the LED is common cathode
-  analogWrite(blue, 255 - randBlue);
-  analogWrite(red, 255 - randRed);
-  analogWrite(green, 255- randGreen);
+  analogWrite(blue, 255 - abs(randBlue));
+  analogWrite(red, 255 - abs(randRed));
+  analogWrite(green, 255- abs(randGreen));
  
 }
 

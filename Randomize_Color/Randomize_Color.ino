@@ -81,15 +81,9 @@ Change this to a function that will create a random color on a separate LED
     int b = int(y/700);
     int r = int(z/700);
     
-    if (g > 3 || g <-3){
-    randGreen += g;
-    }
-    if (b > 3 || b < -3){
-    randBlue += b;
-    }
-    if (r > 3 || r < -3){
-    randRed += r;
-    }
+  randGreen += g;
+  randBlue += b;
+  randRed += r;
     
     
    //Output things for debugging
